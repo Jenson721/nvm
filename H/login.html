@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Private 💌</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    input[type="password"] {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ff5e78;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e34761;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>💘 Secret Entry 💘</h2>
+    <p>Only for someone very special...</p>
+    <input type="password" id="password" placeholder="Enter your love code 💌" />
+    <br />
+    <button onclick="checkPassword()">Enter</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "HH"; // ← Change this to your code
+      const input = document.getElementById("password").value;
+      if (input === correctPassword) {
+        sessionStorage.setItem("unlocked", "true");
+        window.location.href = "home.html"; // ← Change to your main page
+      } else {
+        document.getElementById("errorMsg").innerText = "Wrong code 😢 Try again!";
+      }
+    }
+  </script>
+</body>
+</html>
+

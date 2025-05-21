@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R & J Moments</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .btn-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+
+    .love-btn {
+      padding: 20px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 50%;
+      background-color: #ff4f81;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ff4f81;
+      position: relative;
+    }
+
+    .love-btn:active {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff4f81;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 1s ease-out forwards;
+      color: #ff69b4;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="section1" class="section">💌Boobs PLEASE 💌</div>
+  <div id="section2" class="section">💕 Every click, another heartbeat for you 💕</div>
+  <div id="section3" class="section">🌟 DICK PLEASE 🌟</div>
+  <div id="section4" class="section">🫶 No matter the distance, you're always close to my heart 🫶</div>
+
+  <div class="btn-container">
+    <button class="love-btn" onclick="nextSection('R', this)">R</button>
+    <button class="love-btn" onclick="nextSection('J', this)">J</button>
+  </div>
+
+  <script>
+    const sections = ['section1', 'section2', 'section3', 'section4'];
+    let currentIndex = 0;
+
+    function nextSection(initial, btn) {
+      currentIndex = (currentIndex + 1) % sections.length;
+      document.getElementById(sections[currentIndex]).scrollIntoView({ behavior: 'smooth' });
+      spawnHearts(btn);
+    }
+
+    function spawnHearts(button) {
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = '❤️';
+        heart.style.left = Math.random() * 50 + '%';
+        heart.style.top = '-10px';
+        button.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1000);
+      }
+    }
+  </script>
+
+</body>
+</html>
